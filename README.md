@@ -1,27 +1,68 @@
-# MyApp
+# Health-Challenge-Tracker
+This project is an Health Challenge Tracker web application built with Angular. It allows users to log their activities and track the time spent on each activity. The application stores user data in the browser's local storage and visualizes activity data using a dynamic bar chart.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.0.
+Features:
+1.Add Activity: Users can add their name, time spent, and type of activity.
+2.Data Persistence: User data is saved in local storage to retain information across sessions.
+3.Filtering: Users can filter activities by name and activity type.
+4.Pagination: Activity data is paginated to enhance readability.
+5.User Selection: Dropdown to select different users and visualize their activities on a bar chart.
+6.Dynamic Chart: The chart updates based on the selected user's activities, displaying activities on the X-axis and time spent on the Y-axis.
 
-## Development server
+Technologies Used:
+1.Angular: For building the web application.
+2.Chart.js: For creating the dynamic bar chart.
+3.Tailwind CSS: For styling the application.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Getting Started:
 
-## Code scaffolding
+1.Clone the repository:
+git clone https://github.com/aarishfaiz/Health-Challenge-Tracker
+cd my-app
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.Install dependencies:
+npm install
 
-## Build
+3.Run the application:
+ng serve
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Usage:
+1.Add Activity: Enter your name, time spent, and select an activity. Click "Add" to save the activity.
+2.Filter Activities: Use the filter fields to search activities by name or activity type.
+3.Navigate Pages: Use the "Previous" and "Next" buttons to navigate through paginated activity data.
+4.Select User: Use the dropdown to select a user and view their activity data on the chart.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Code Coverage
 
-## Running end-to-end tests
+Ensure you have the necessary setup in angular.json to generate a coverage report.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+"test": {
+  "options": {
+    "codeCoverage": true
+  }
+}
 
-## Further help
+Run the tests with coverage:
+ng test --code-coverage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The project includes unit tests for the `UserComponent` and `UserService` with 100% code coverage. 
+
+How to Generate Coverage Report
+
+1. Run the tests with code coverage:
+   ```bash
+   ng test --code-coverage
+
+
+File	             | Statements	| Branches	| Functions |	Lines
+user.component.ts	 | 100%	      | 100%	    | 100%	    | 100%
+user.service.ts	   | 100%	      | 100%	    | 100%	    | 100%
+
+ Final Steps
+
+1. Add tests and configuration to your project: Ensure that your tests and the coverage configuration are correctly added.
+2. Run tests: Run your tests to confirm they pass and generate the coverage report.
+3. Commit changes: Commit all your changes to your repository.
+4. Push to GitHub: Push your commits to your GitHub repository.
+
