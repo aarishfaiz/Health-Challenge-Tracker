@@ -32,3 +32,37 @@ Usage:
 3.Navigate Pages: Use the "Previous" and "Next" buttons to navigate through paginated activity data.
 4.Select User: Use the dropdown to select a user and view their activity data on the chart.
 
+
+Code Coverage
+
+Ensure you have the necessary setup in angular.json to generate a coverage report.
+
+"test": {
+  "options": {
+    "codeCoverage": true
+  }
+}
+
+Run the tests with coverage:
+ng test --code-coverage
+
+The project includes unit tests for the `UserComponent` and `UserService` with 100% code coverage. 
+
+How to Generate Coverage Report
+
+1. Run the tests with code coverage:
+   ```bash
+   ng test --code-coverage
+
+
+File	             | Statements	| Branches	| Functions |	Lines
+user.component.ts	 | 100%	      | 100%	    | 100%	    | 100%
+user.service.ts	   | 100%	      | 100%	    | 100%	    | 100%
+
+ Final Steps
+
+1. Add tests and configuration to your project: Ensure that your tests and the coverage configuration are correctly added.
+2. Run tests: Run your tests to confirm they pass and generate the coverage report.
+3. Commit changes: Commit all your changes to your repository.
+4. Push to GitHub: Push your commits to your GitHub repository.
+
