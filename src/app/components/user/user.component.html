@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Tracker</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg mt-10">
+        <h1 class="text-2xl text-green-500 font-bold mb-6">Health Challenge Tracker</h1>
+        <div id="add">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Name:</h3>
+                <input type="text" placeholder="Enter Your Name" class="mt-1 p-2 w-full border rounded-md" (change)="onChange($event)" [(ngModel)]="user.userName">
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Enter Time (in Minutes):</h3>
+                <input type="number" placeholder="Enter Time" class="mt-1 p-2 w-full border rounded-md" (change)="onChange($event)" [(ngModel)]="user.time">
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Select Activity:</h3>
+                <form class="space-y-2">
+                    <div>
+                        <input (change)="onChange($event)" type="radio" id="running" name="activity" value="Running" [(ngModel)]="user.activity">
+                        <label for="running" class="ml-2">Running</label>
+                    </div>
+                    <div>
+                        <input (change)="onChange($event)" type="radio" id="cycling" name="activity" value="Cycling" [(ngModel)]="user.activity">
+                        <label for="cycling" class="ml-2">Cycling</label>
+                    </div>
+                    <div>
+                        <input (change)="onChange($event)" type="radio" id="swimming" name="activity" value="Swimming" [(ngModel)]="user.activity">
+                        <label for="swimming" class="ml-2">Swimming</label>
+                    </div>
+                    <div>
+                        <input (change)="onChange($event)" type="radio" id="yoga" name="activity" value="Yoga" [(ngModel)]="user.activity">
+                        <label for="yoga" class="ml-2">Yoga</label>
+                    </div>
+                </form>
+            </div>
+            <button (click)="Add()" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">Add</button>
+            <hr class="my-6">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Filter by Name:</h3>
+                <input type="text" placeholder="Enter Name to Filter" class="mt-1 p-2 w-full border rounded-md" [(ngModel)]="filterName">
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Filter by Activity:</h3>
+                <input type="text" placeholder="Enter Activity to Filter" class="mt-1 p-2 w-full border rounded-md" [(ngModel)]="filterActivity">
+            </div>
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold">Select User:</h3>
+                <select [(ngModel)]="selectedUser" (change)="onUserChange()" class="mt-1 p-2 w-full border rounded-md">
+                    <option *ngFor="let user of userArr" [value]="user.userName">{{ user.userName }}</option>
+                </select>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Activity Data:</h3>
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="p-2 border">UserName</th>
+                            <th class="p-2 border">Activity</th>
+                            <th class="p-2 border">Time (Minutes)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of paginatedData()" class="hover:bg-gray-100 transition-colors">
+                            <td class="p-2 border">{{ item.userName }}</td>
+                            <td class="p-2 border">{{ item.activity }}</td>
+                            <td class="p-2 border">{{ item.time }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="flex justify-between items-center mt-4">
+                    <button (click)="previousPage()" [disabled]="currentPage === 1" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 transition-colors">Previous</button>
+                    <span>Page {{ currentPage }} of {{ totalPages() }}</span>
+                    <button (click)="nextPage()" [disabled]="currentPage === totalPages()" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 transition-colors">Next</button>
+                </div>
+            </div>
+            <div>
+                <canvas id="MyChart"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
